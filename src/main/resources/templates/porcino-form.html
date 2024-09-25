@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro porcino</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" th:href="@{/}">La Granja</a>
+        <div class="collapse navbar-collpase" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/porcinos}">Control</a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Registro nuevo porcino</h1>
+                <div class="card-body">
+                    <form th:action="@{/porcinos}" th:object="${porcino}" method="POST">
+                        <div class="form-group">
+                            <label>Raza: </label>
+                            <select class="form-control" th:field="*{raza}" required>
+                                <option value="1-york">York</option>
+                                <option value="2-hamp">Hamp</option>
+                                <option value="3-duroc">Duroc</option>
+                            </select> 
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Edad: </label>
+                            <input type="number" name="Edad" th:field="*{edad}" class="form-control" min="0" required> 
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Peso: </label>
+                            <input type="number" name="Peso" th:field="*{peso}" class="form-control" min="0" required> 
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Alimentación: </label>
+                            <select th:field="*{alimentacion}" class="form-control" required>
+                                <option th:each="alimentacion : ${alimentaciones}" 
+                                        th:value="${alimentacion.id}" 
+                                        th:text="${alimentacion.descripcion}">Selecciona Alimentación</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label>Cliente: </label>
+                            <select th:field="*{cliente}" class="form-control" required>
+                                <option th:each="cliente : ${clientes}" 
+                                        th:value="${cliente.cedula}" 
+                                        th:text="${cliente.nombres}">Selecciona Cliente</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="box-footer">
+                            <button class="btn btn-success">Guardar</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
