@@ -15,7 +15,7 @@ public class porcino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
     @Column(name = "raza", nullable = false)
     private String raza; // 1-York, 2-Hamp, 3-Duroc
@@ -36,11 +36,11 @@ public class porcino {
     @JoinColumn(name = "alimentacionId", nullable = true)
     private alimentacion alimentacion;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -87,7 +87,7 @@ public class porcino {
     public porcino() {
     }
 
-    public porcino(Long id, String raza, int edad, double peso, cliente cliente, alimentacion alimentacion) {
+    public porcino(int id, String raza, int edad, double peso, cliente cliente, alimentacion alimentacion) {
         this.id = id;
         this.raza = raza;
         this.edad = edad;

@@ -1,0 +1,64 @@
+type Query{
+
+    mostrarAlimentacionesPorId(id:String) : Alimentacion
+    findAllAlimentacion: [Alimentacion]
+
+    findAllClientes: [Cliente]
+    findClienteById(id:String) : Cliente
+
+    findAllPorcino: [Porcino]
+    findPorcinoByClient(idClient:String): Porcino
+}
+
+type Mutation{
+    createAlimentacion(inputAlimentacion:inputAlimentacion) : String
+    deleteAlimentacionById(alimentacionId:String) : String
+
+    createCliente(inputCliente: inputCliente): String
+    deleteCliente(clienteId: String) : String
+
+    createPorcino(inputPorcino:inputPorcino) : String
+    deletePorcino(idPorcino:String) : String
+}
+
+type Porcino{
+    id:ID,
+    raza:String!,
+    edad:Int!,
+    peso:Float!,
+}
+type Cliente{
+    cedula:ID,
+    nombres:String!,
+    apellidos:String!,
+    direccion:String!,
+    telefono:String!
+}
+
+type Alimentacion{
+    id:ID,
+    descripcion:String,
+    dosis:Int
+
+}
+
+input inputAlimentacion {
+    descripcion:String,
+    dosis:Int
+}
+
+input inputCliente {
+    nombres:String!,
+    apellidos:String!,
+    direccion:String!,
+    telefono:String!
+}
+
+input inputPorcino{
+
+    raza:String!,
+    edad:Int!,
+    peso:Float!,
+    cliente_id:Int
+    alimentacion_id:Int
+}

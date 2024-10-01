@@ -15,10 +15,10 @@ public class alimentacionService {
     alimentacionRepository alimentacionRepository;
 
     public List<alimentacion> getAlimentaciones() {
-        return alimentacionRepository.findAll();
+        return (List<alimentacion>) alimentacionRepository.findAll();
     }
 
-    public alimentacion getAlimentaciones(Long id) {
+    public alimentacion getAlimentacionesById(Long id) {
         return alimentacionRepository.findById(id).get();
     }
 

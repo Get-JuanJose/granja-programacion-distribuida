@@ -40,13 +40,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="alimentacion: ${alimentaciones}">
-                    <td th:text="${alimentacion.id}">Id</td>
-                    <td th:text="${alimentacion.descripcion}">Descripcion</td>
-                    <td th:text="${alimentacion.dosis}">dosis</td>
+                <tr th:each="alimentaciones: ${alimentaciones}">
+                    <td th:text="${alimentaciones.id}">Id</td>
+                    <td th:text="${alimentaciones.descripcion}">Descripcion</td>
+                    <td th:text="${alimentaciones.dosis}">dosis</td>
                     <td>
-                        <a class="btn btn-info" th:href="@{/alimentacion/editar/{id}(id=${alimentacion.id})}">Editar</a>
-                        <a class="btn btn-danger" th:href="@{/alimentacion/eliminar/{id}(id=${alimentacion.id})}">Eliminar</a>
+                        <a class="btn btn-info" th:href="@{/alimentacion/editar/'{id}'(id=${alimentaciones.id})}">Editar</a>
+                        <a class="btn btn-danger" th:href="@{/alimentacion/eliminar/{id}(id=${alimentaciones.id})}">Eliminar</a>
                     </td>
                 </tr>
             </tbody>
